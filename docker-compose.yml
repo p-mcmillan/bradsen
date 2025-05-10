@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PORT=3000
+    networks:
+      - bradsen-app
+
+  nginx:
+    container_name: bradsen-app-proxy
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "6969:80"
+    restart: always
+    depends_on:
+      - app
+    networks:
+      - bradsen-app
+
+networks:
+  bradsen-app:
+    driver: bridge

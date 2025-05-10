@@ -1,0 +1,8 @@
+change this in 
+
+node_modules/vite-plugin-ssr-config/dist/index.js
+
+const manifestFile = path2.resolve(`${clientOutDir}/.vite/manifest.json`);
+
+
+const manifestOut = manifest[entryClient]?.file ?? Object.values(manifest)[0].file;
