@@ -1,5 +1,12 @@
 const PropertyCard = ({ listing }) => {
-  const imageUrl = Object.values(listing.image ?? {})[0]; // fallback-safe
+  const imagesObj = listing.image ?? {};
+  const targetFile = '1777 Caledonia-18.webp';
+
+  const matchedKey = Object.keys(imagesObj).find((key) =>
+    key.endsWith(targetFile)
+  );
+
+  const imageUrl = matchedKey ? imagesObj[matchedKey] : null;
 
   return (
     <div className="mb-6 bg-white rounded-xl shadow p-3 max-w-">

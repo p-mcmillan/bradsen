@@ -1,18 +1,19 @@
 {
-  "name": "Your Site Name",
-  "short_name": "RealEstate",
+  "name": "Bradsen Real Estate | North Vancouver, Burnaby & Vancouver",
+  "short_name": "Bradsen Realty",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
+  "description": "Real estate services in Deep Cove, North Vancouver, Vancouver, and Burnaby. Powered by Westmar and Macdonald Realty.",
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "/westmar-logo-transparent.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/icon-512.png",
+      "src": "/westmar-logo-transparent.png",
       "sizes": "512x512",
       "type": "image/png"
     }

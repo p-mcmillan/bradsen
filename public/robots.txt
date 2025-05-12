@@ -2,3 +2,26 @@ User-agent: *
 Allow: /
 
 Sitemap: https://tylerbradsen.com/sitemap.xml
+
+User-agent: Googlebot
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: CCBot
+User-agent: anthropic-ai
+User-agent: Google-Extended
+User-agent: AdsBot-Google
+User-agent: AdsBot-Google-Mobile
+User-agent: AdsBot-Google-Mobile-Apps
+User-agent: bingbot
+
+
+User-agent: AhrefsBot
+User-agent: AhrefsSiteAudit
+
+User-agent: MJ12bot
+Crawl-delay: 10
+
+User-agent: Pinterest
+Crawl-delay: 1
+
+Disallow: /private

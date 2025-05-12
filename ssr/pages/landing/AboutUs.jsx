@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const AboutUsLanding = () => {
   return (
@@ -17,25 +17,25 @@ const AboutUsLanding = () => {
         {/* Heading - Left on desktop */}
         <div className="min-[1440px]:w-full">
           <h4 className="text-[32px] min-[834px]:text-[40px] min-[1440px]:text-[64px] font-bold">
-            About Us
+            About Me
           </h4>
         </div>
 
         {/* Content - Right on desktop */}
         <div className=" flex flex-col gap-8">
           {/* Paragraph */}
-          <p className="text-base min-[834px]:text-[18px] leading-relaxed min-[1440px]:pt-8  ">
-            We believe that finding the perfect property is more than just a
-            transaction—it’s a life-changing journey. Since our inception, we
-            have dedicated ourselves to transforming the way people buy, sell,
-            and invest.
+          <p className="text-base min-[834px]:text-[18px] leading-relaxed min-[1440px]:pt-8">
+            I believe that finding the perfect property is more than just a
+            transaction—it’s a life-changing journey. Since the beginning of my
+            real estate career, I’ve been dedicated to transforming the way
+            individuals buy, sell, and invest.
             <br />
             <br />
-            With a focus on trust, innovation, and customer satisfaction, we aim
-            to provide a seamless experience for every client. Whether you’re
-            searching for your dream home, selling a beloved property, or
-            investing in lucrative opportunities—our extensive portfolio spans
-            residential, commercial, and investment properties.
+            With a strong focus on trust, innovation, and client satisfaction,
+            my goal is to provide a seamless experience for every person I work
+            with. Whether you're searching for your dream home, selling a
+            cherished property, or exploring investment opportunities—I offer
+            guidance across residential, commercial, and investment real estate.
           </p>
 
           {/* Images side by side */}

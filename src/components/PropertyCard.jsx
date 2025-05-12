@@ -1,16 +1,16 @@
-"use client";
-import React from "react";
-import { Link } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
+'use client';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 const images = [
-  "https://as2.ftcdn.net/v2/jpg/04/73/72/11/1000_F_473721132_I9LNMCvx7Du6EdJNH91EywcNHzgtEclz.jpg",
-  "https://as2.ftcdn.net/v2/jpg/04/62/81/03/1000_F_462810332_YCLTHJnoAguHv1Zuh5LsfnMTgL4QqkDj.jpg",
-  "https://as1.ftcdn.net/v2/jpg/01/07/15/04/1000_F_107150476_KXeV3O5D6OFj3nr1e0G9IT6VhlYlw2Y7.jpg",
-  "https://as1.ftcdn.net/v2/jpg/00/64/74/76/1000_F_64747679_kIHp9yHHRQpihAVAp2tsOunbiqKRhflI.jpg",
+  'https://as2.ftcdn.net/v2/jpg/04/73/72/11/1000_F_473721132_I9LNMCvx7Du6EdJNH91EywcNHzgtEclz.jpg',
+  'https://as2.ftcdn.net/v2/jpg/04/62/81/03/1000_F_462810332_YCLTHJnoAguHv1Zuh5LsfnMTgL4QqkDj.jpg',
+  'https://as1.ftcdn.net/v2/jpg/01/07/15/04/1000_F_107150476_KXeV3O5D6OFj3nr1e0G9IT6VhlYlw2Y7.jpg',
+  'https://as1.ftcdn.net/v2/jpg/00/64/74/76/1000_F_64747679_kIHp9yHHRQpihAVAp2tsOunbiqKRhflI.jpg',
 ];
 
 const PropertyCard = () => {
@@ -24,7 +24,7 @@ const PropertyCard = () => {
         <figure className="">
           <Swiper
             autoplay={{ delay: 2500, disableOnInteraction: false }}
-            pagination={{ clickable: true }}
+            // pagination={{ clickable: true }}
             modules={[Autoplay, Pagination]}
             className="rounded-lg custom-swiper"
           >

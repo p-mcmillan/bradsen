@@ -1,35 +1,28 @@
-import { useEffect, useState } from "react";
-import Cookies from "js-cookie";
+import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
 
 export const useCookieConsent = () => {
-  const [consent, setConsent] = useState({
-    analytics: false,
-    marketing: false,
-    preferences: false,
-  });
+  const [analytics, setAnalytics] = useState(false);
 
   useEffect(() => {
-    const stored = Cookies.get("cookie_consent");
+    const stored = Cookies.get('cookie_consent');
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
-        setConsent({
-          analytics: !!parsed.analytics,
-          marketing: !!parsed.marketing,
-          preferences: !!parsed.preferences,
-        });
+        setAnalytics(!!parsed.analytics);
       } catch (error) {
-        console.warn("Invalid cookie_consent format");
+        console.warn('Invalid cookie_consent format:', error);
       }
     }
   }, []);
 
   const hasConsent = (type) => {
-    return !!consent[type];
+    if (type !== 'analytics') return false;
+    return analytics;
   };
 
   return {
-    consent,
+    analytics,
     hasConsent,
   };
 };

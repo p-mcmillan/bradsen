@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const ExperienceSection = ({ modernCondoImage, classicHomeImage }) => {
   return (
@@ -17,35 +17,31 @@ const ExperienceSection = ({ modernCondoImage, classicHomeImage }) => {
           />
 
           <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-1">
-              Local Market Expertise
-            </h3>
-            <p className="text-sm text-gray-700">
-              Our agents live and breathe the communities they serve, offering
-              insider knowledge that gives our clients a competitive edge.
+            <h3 className=" font-semibold mb-1">Local Market Expertise</h3>
+            <p className=" text-gray-700 min-[834px]:text-[18px]">
+              I live and breathe the communities I serve, offering local
+              insights that give you a real advantage when buying or selling.
             </p>
           </div>
 
           <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-1">
-              Innovative Technology
-            </h3>
-            <p className="text-sm text-gray-700">
-              We leverage cutting-edge tools and marketing strategies to ensure
-              your property reaches the right buyers
+            <h3 className="font-semibold mb-1">Innovative Technology</h3>
+            <p className=" text-gray-700 min-[834px]:text-[18px]">
+              I use cutting-edge tools and marketing strategies to make sure
+              your property gets in front of the right buyers—fast and
+              effectively.
             </p>
           </div>
 
           <div className="mb-6">
-            <h3 className="text-lg font-semibold mb-1">
-              Client-First Approach
-            </h3>
-            <p className="text-sm text-gray-700">
-              Your goals become our goals, with responsive communication and
-              tailored solutions matching your unique needs.
+            <h3 className="font-semibold mb-1">Client-First Approach</h3>
+            <p className=" text-gray-700 min-[834px]:text-[18px]">
+              Your goals are my top priority. I provide responsive
+              communication, honest advice, and solutions tailored to your
+              unique needs.
             </p>
           </div>
-        </div>{" "}
+        </div>{' '}
         <div className="min-[1440px]:w-[646px]">
           <img
             src={classicHomeImage} // adjust path as needed

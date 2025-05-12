@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { agentInfo } from "../../constants";
-import ContactForm from "../../components/ContactForm";
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { agentInfo } from '../../constants';
+import ContactForm from '../../components/ContactForm';
 
 const AgentDetails = () => {
   useEffect(() => {
@@ -16,7 +16,7 @@ const AgentDetails = () => {
     <div className=" mx-auto px-4 min-[834px]:px-8 min-[1440px]:px-16 mt-24 mb-12 max-w-[1344px]">
       <div className="   flex flex-col   min-[834px]:flex-row justify-between ">
         <div className=" min-[834px]:w-[333px] min-[1440px]:w-[433px]">
-          {" "}
+          {' '}
           <h3 className="min-[1440px]:text-[64px] min-[834px]:text-[40px] text-[32px] font-semibold mb-8">
             Agent Details
           </h3>
@@ -58,8 +58,9 @@ const AgentDetails = () => {
           <div className="bg-white rounded-xl shadow p-4 mb-6  ">
             <div className="mt-4 space-y-2 ">
               <p>
-                {" "}
-                <ion-icon class="mr-4" name="call"></ion-icon> {agent.phone}
+                {' '}
+                <ion-icon class="mr-4" name="call"></ion-icon>{' '}
+                <a href={`tel:${agentInfo.phoneLink}`}>{agentInfo.phone}</a>
               </p>
             </div>
           </div>
@@ -74,7 +75,8 @@ const AgentDetails = () => {
           <div className="bg-white rounded-xl shadow p-4 mb-6  ">
             <div className="mt-4 space-y-2 ">
               <p>
-                <ion-icon class="mr-4" name="mail"></ion-icon> {agent.email}
+                <ion-icon class="mr-4" name="mail"></ion-icon>{' '}
+                <a href={`mailto:${agentInfo.email}`}>{agentInfo.email}</a>
               </p>
             </div>
           </div>
@@ -83,7 +85,7 @@ const AgentDetails = () => {
         <div>
           <div className=" min-[834px]:w-[389px] text-gray-800 space-y-4">
             <section>
-              <h3 className="font-semibold">About Us</h3>
+              <h3 className="font-semibold">About Me</h3>
               <p>{agent.bio}</p>
             </section>
 

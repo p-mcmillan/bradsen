@@ -1,5 +1,5 @@
-import React from "react";
-import { backgroundImages } from "../../constants/index";
+import React from 'react';
+import { backgroundImages } from '../../constants/index';
 
 const ContactUs = () => {
   return (
@@ -22,12 +22,12 @@ const ContactUs = () => {
             className="
            font-bold min-[834px]:text-[32px] min-[1440px]:text-[64px] "
           >
-            Contact Us
+            Contact Me
           </h1>
 
           <p className="text-gray-200 leading-relaxed min-[1440px]:w-[602px] min-[834px]:w-[550px] min-[834px]:text-[18px]  ">
-            Need assistance? Contact us today for personalized support with your
-            real estate needs. Whether you're buying, selling, or renting.
+            Need assistance? Contact me today for personalized support with your
+            real estate needs. Whether you're buying or selling.
           </p>
         </div>
       </div>

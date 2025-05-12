@@ -1,6 +1,6 @@
-import React from "react";
-import { agentInfo } from "../../constants";
-import ContactUsForm from "../../components/ContactUsForm";
+import React from 'react';
+import { agentInfo } from '../../constants';
+import ContactUsForm from '../../components/ContactUsForm';
 const { phoneLink, phone, brokerage, email } = agentInfo;
 
 const ContactUsSection = () => {
@@ -10,12 +10,12 @@ const ContactUsSection = () => {
         <div className="min-[1440px]:w-[628px]">
           {/* Header */}
           <h2 className="font-bold mb-2 min-[834px]:text-[40px] min-[1440px]:text-[64px] leading-tight">
-            Contact Our Real Estate Experts
+            Get in Touch
           </h2>
           <p className=" text-gray-600 mb-4 min-[834px]:text-[18px]">
-            If you're looking for your dream home, need help selling your
-            property, or simply have questions about the market, our team is
-            here to assist you.
+            Whether you're searching for your dream home, selling a property you
+            love, or just exploring your options, I'm here to help every step of
+            the way.
           </p>
           {/* Benefits */}
           <ul className="space-y-3 mb-6 min-[834px]:text-[18px]">
@@ -25,7 +25,7 @@ const ContactUsSection = () => {
             </li>
             <li className="flex items-start gap-2">
               <span className="text-green-500 ">✓</span>
-              <p>Get expert advice on buying, selling, or renting</p>
+              <p>Get expert advice on buying or selling</p>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-green-500 ">✓</span>
@@ -60,13 +60,13 @@ const ContactUsSection = () => {
           {/* Contact Info */}
           <div className="text-gray-700 flex-1">
             <div className="bg-white rounded-xl shadow p-4 mb-6">
-              <p className="font-semibold">📞 Call Us</p>
+              <p className="font-semibold">📞 Call Me</p>
               <a href={`tel:${phoneLink}`}>{phone}</a>
             </div>
             <div className="bg-white rounded-xl shadow p-4 mb-6">
-              <p className="font-semibold">📍 Visit Us</p>
+              <p className="font-semibold">📍 Visit Me</p>
               <p>
-                {brokerage.address.street}, {brokerage.address.city},{" "}
+                {brokerage.address.street}, {brokerage.address.city},{' '}
                 {brokerage.address.province} {brokerage.address.postalCode}
               </p>
             </div>
@@ -75,7 +75,7 @@ const ContactUsSection = () => {
                 <span className="text-xl mr-2">✉️</span> Email
               </p>
               <div className="text-gray-600 space-y-1">
-                <p>{email}</p>
+                <a href={`mailto:${email}`}>{email}</a>
               </div>
             </div>
             <div className="bg-white rounded-xl shadow p-4 mb-6">

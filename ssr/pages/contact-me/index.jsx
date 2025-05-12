@@ -1,8 +1,8 @@
-import { useEffect, Suspense, lazy } from "react";
+import { useEffect, Suspense, lazy } from 'react';
 
-import ContactUs from "./ContactUsHero";
+import ContactUs from './ContactUsHero';
 
-const ContactUsSection = lazy(() => import("./ContactUsSection"));
+const ContactUsSection = lazy(() => import('./ContactUsSection'));
 
 const index = () => {
   useEffect(() => {

@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import PropertyCard from "../../components/PropertyCard";
-import { listings } from "../../constants/index";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PropertyCard from '../../components/PropertyCard';
+import { listings } from '../../constants/index';
 
 const PropertyList = () => {
   return (
@@ -38,9 +38,11 @@ const PropertyList = () => {
         combine expertise and integrity
       </p>
       <div className="text-center mt-4">
-        <button className="border border-black px-6 py-2 rounded-full mt-2 hover:bg-black hover:text-white transition">
-          See Details
-        </button>
+        <Link to="/agent/b4871e51-b486-421c-8b64-4f667bf5fc59">
+          <button className="border border-black px-6 py-2 rounded-full mt-2 hover:bg-black hover:text-white transition">
+            See Details
+          </button>
+        </Link>
       </div>
     </div>
   );

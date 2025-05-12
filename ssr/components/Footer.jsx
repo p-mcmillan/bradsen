@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { navLinks } from "../constants/index";
-import { Link } from "react-router-dom";
-import { agentInfo, backgroundImages } from "../constants/index";
+import React, { useState, useEffect } from 'react';
+import { navLinks } from '../constants/index';
+import { Link } from 'react-router-dom';
+import { agentInfo, backgroundImages } from '../constants/index';
 
 const Footer = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const { name, phoneLink, phone } = agentInfo;
 
-  const subject = "training";
-  const body = "Hello,";
+  const subject = 'info';
+  const body = 'Hello,';
 
   useEffect(() => {
     const obfuscateEmail = (user, domain, extension) => {
@@ -17,7 +17,7 @@ const Footer = () => {
       return <a href={mailtoLink}>{obfuscatedEmail}</a>;
     };
 
-    setEmail(obfuscateEmail("info", "tylerbradsen", "com"));
+    setEmail(obfuscateEmail('tylerbradsen', 'gmail', 'com'));
   }, []);
 
   return (
@@ -38,7 +38,7 @@ const Footer = () => {
             Your Dream Home <br /> Awaits – Let’s Make It Happen
           </h2>
           <p className="text-gray-300 mt-4 text-sm">
-            Whether you’re buying, selling, or investing, we’re here to guide
+            Whether you’re buying, selling, or investing, I am here to guide
             you. Every step of the way. Start your journey today!
           </p>
           <div className="flex flex-col min-[834px]:flex-row min-[834px]:justify-center items-center gap-4 mt-6">
@@ -47,7 +47,7 @@ const Footer = () => {
                 Explore Properties
               </button>
             </Link>
-            <Link to="/contact-us">
+            <Link to="/contact-me">
               <button className="border border-white py-2 px-6 rounded-full font-semibold text-white">
                 Get Expert Advice
               </button>
@@ -71,7 +71,7 @@ const Footer = () => {
         </div>
 
         {/* Westmar Logo */}
-        <div className="flex justify-center mb-6">
+        {/* <div className="flex justify-center mb-6">
           <a
             href="https://westmar.ca/"
             target="_blank"
@@ -83,7 +83,7 @@ const Footer = () => {
               className="h-12 opacity-70"
             />
           </a>
-        </div>
+        </div> */}
 
         {/* Legal */}
         <div className="text-gray-400 text-xs text-center mt-8 mb-4">
