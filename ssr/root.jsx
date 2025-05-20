@@ -1,22 +1,35 @@
-import './index.css';
+import "./index.css";
 
-import { LiveReload } from '@ssr/liveReload.jsx';
-import { ViteScripts } from '@ssr/viteScripts.jsx';
-import { Outlet } from 'react-router-dom';
-import AnalyticsSetup from './components/AnalyticsSetup';
-import Navbar from './components/NavBar/Navbar';
-import Footer from './components/Footer';
-import CookieConsent from './components/CookieConsent';
+import { createPrefetchedQueryClient } from "../utils/prefetchClient.js";
+import AppShell from "../ssr/components/AppShell.jsx";
+import { LiveReload } from "@ssr/liveReload.jsx";
+import { ViteScripts } from "@ssr/viteScripts.jsx";
+import { Outlet } from "react-router-dom";
+import AnalyticsSetup from "./components/AnalyticsSetup";
+import Navbar from "./components/NavBar/Navbar";
+import Footer from "./components/Footer";
+import CookieConsent from "./components/CookieConsent";
 
 export const RootDocument = async () => {
-  let styles = '';
-  let scripts = '';
+  let styles = "";
+  let scripts = "";
+  let dehydratedState = {};
 
-  if (typeof window === 'undefined') {
-    const { getClientAssets } = await import('../utils/getClientAssets.js');
+  if (typeof window === "undefined") {
+    console.log("🧠 Running in server (SSR)");
+    const { getClientAssets } = await import("../utils/getClientAssets.js");
+
+    const prefetched = await createPrefetchedQueryClient(); // 👈 FIX
+    dehydratedState = prefetched.dehydratedState;
+
     const assets = getClientAssets();
     styles = assets.styles;
     scripts = assets.scripts;
+
+    console.log(
+      "🔄 SSR dehydratedState keys:",
+      Object.keys(dehydratedState?.queries || {})
+    );
   }
 
   return (
@@ -105,82 +118,82 @@ export const RootDocument = async () => {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'RealEstateAgent',
-              name: 'Tyler Bradsen',
+              "@context": "https://schema.org",
+              "@type": "RealEstateAgent",
+              name: "Tyler Bradsen",
               image:
-                'https://tylerbradsen.com/assets/tyler_bradsen-BJUJG6OL.webp',
+                "https://tylerbradsen.com/assets/tyler_bradsen-BJUJG6OL.webp",
               address: {
-                '@type': 'PostalAddress',
-                streetAddress: '203 - 5188 Westminster Hwy',
-                addressLocality: 'Richmond',
-                addressRegion: 'BC',
-                postalCode: 'V7C 5S7',
-                addressCountry: 'CA',
+                "@type": "PostalAddress",
+                streetAddress: "203 - 5188 Westminster Hwy",
+                addressLocality: "Richmond",
+                addressRegion: "BC",
+                postalCode: "V7C 5S7",
+                addressCountry: "CA",
               },
-              openingHours: ['Mo-Fr 09:00-18:00', 'Sa 10:00-16:00'],
-              url: 'https://tylerbradsen.com/contact-me',
-              telephone: '+1-604-989-8442',
+              openingHours: ["Mo-Fr 09:00-18:00", "Sa 10:00-16:00"],
+              url: "https://tylerbradsen.com/contact-me",
+              telephone: "+1-604-989-8442",
               areaServed: [
                 // Vancouver
-                'Downtown',
-                'Yaletown',
-                'Gastown',
-                'Coal Harbour',
-                'West End',
-                'Kitsilano',
-                'Fairview',
-                'Mount Pleasant',
-                'Main Street',
-                'Fraser',
-                'Cambie Village',
-                'Shaughnessy',
-                'Marpole',
-                'Oakridge',
-                'Kerrisdale',
-                'Dunbar',
-                'Point Grey',
-                'Hastings-Sunrise',
-                'Renfrew-Collingwood',
-                'Strathcona',
-                'South Vancouver',
+                "Downtown",
+                "Yaletown",
+                "Gastown",
+                "Coal Harbour",
+                "West End",
+                "Kitsilano",
+                "Fairview",
+                "Mount Pleasant",
+                "Main Street",
+                "Fraser",
+                "Cambie Village",
+                "Shaughnessy",
+                "Marpole",
+                "Oakridge",
+                "Kerrisdale",
+                "Dunbar",
+                "Point Grey",
+                "Hastings-Sunrise",
+                "Renfrew-Collingwood",
+                "Strathcona",
+                "South Vancouver",
 
                 // North Vancouver
-                'Lonsdale',
-                'Lower Lonsdale',
-                'Upper Lonsdale',
-                'Edgemont',
-                'Lynn Valley',
-                'Blueridge',
-                'Deep Cove',
-                'Canyon Heights',
-                'Delbrook',
-                'Capilano',
-                'Seymour',
-                'Queensbury',
-                'Westlynn',
-                'Grousewoods',
-                'Indian River',
+                "Lonsdale",
+                "Lower Lonsdale",
+                "Upper Lonsdale",
+                "Edgemont",
+                "Lynn Valley",
+                "Blueridge",
+                "Deep Cove",
+                "Canyon Heights",
+                "Delbrook",
+                "Capilano",
+                "Seymour",
+                "Queensbury",
+                "Westlynn",
+                "Grousewoods",
+                "Indian River",
 
                 // Burnaby
-                'Metrotown',
-                'Brentwood',
-                'Edmonds',
-                'Burnaby Heights',
-                'Capitol Hill',
-                'Forest Glen',
-                'South Slope',
-                'Big Bend',
-                'Deer Lake',
-                'Central Park',
-                'Willingdon Heights',
-                'Montecito',
-                'Lochdale',
-                'Government Road',
-                'Simon Fraser Hills',
-                'Sperling-Duthie',
+                "Metrotown",
+                "Brentwood",
+                "Edmonds",
+                "Burnaby Heights",
+                "Capitol Hill",
+                "Forest Glen",
+                "South Slope",
+                "Big Bend",
+                "Deer Lake",
+                "Central Park",
+                "Willingdon Heights",
+                "Montecito",
+                "Lochdale",
+                "Government Road",
+                "Simon Fraser Hills",
+                "Sperling-Duthie",
               ].map((area) => ({
-                '@type': 'Place',
+                "@type": "Place",
                 name: area,
               })),
             }),
@@ -205,6 +218,14 @@ export const RootDocument = async () => {
             ?.map((tag, i) => (
               <div key={i} dangerouslySetInnerHTML={{ __html: tag }} />
             ))}
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.__REACT_QUERY_STATE__ = ${JSON.stringify(
+              dehydratedState
+            )}`,
+          }}
+        />
       </head>
 
       <body>
@@ -214,7 +235,7 @@ export const RootDocument = async () => {
             src="https://www.googletagmanager.com/ns.html?id=GTM-W8VPZTM2"
             height="0"
             width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
+            style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
 
@@ -222,7 +243,9 @@ export const RootDocument = async () => {
 
         <Navbar />
         <main>
-          <Outlet />
+          <AppShell dehydratedState={dehydratedState}>
+            <Outlet />
+          </AppShell>
         </main>
         <Footer />
         <CookieConsent />

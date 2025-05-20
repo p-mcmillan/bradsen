@@ -1,25 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { navLinks } from '../constants/index';
-import { Link } from 'react-router-dom';
-import { agentInfo, backgroundImages } from '../constants/index';
+import React, { useState, useEffect } from "react";
+import { navLinks } from "../constants/index";
+import { Link } from "react-router-dom";
+import { agentInfo, backgroundImages } from "../constants/index";
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const { name, phoneLink, phone } = agentInfo;
 
-  const subject = 'info';
-  const body = 'Hello,';
+  const user = "tylerbradsen";
+  const domain = "gmail";
+  const extension = "com";
 
-  useEffect(() => {
-    const obfuscateEmail = (user, domain, extension) => {
-      const obfuscatedEmail = `${user}[at]${domain}.${extension}`;
-      const mailtoLink = `mailto:${user}@${domain}.${extension}?subject=${subject}&body=${body}`;
-      return <a href={mailtoLink}>{obfuscatedEmail}</a>;
-    };
-
-    setEmail(obfuscateEmail('tylerbradsen', 'gmail', 'com'));
-  }, []);
-
+  const mailto = `mailto:${user}@${domain}.${extension}?subject=info&body=Hello,`;
+  const obfuscated = `${user}[at]${domain}.${extension}`;
   return (
     <footer className="relative text-white px-4 sm:px-8 lg:px-16 py-6 overflow-hidden">
       {/* Background image */}
@@ -57,7 +50,10 @@ const Footer = () => {
 
         {/* Contact Info */}
         <div className="flex flex-col min-[834px]:flex-row justify-center items-center text-gray-300 text-sm gap-2 min-[834px]:gap-6 mb-8 text-center min-[834px]:text-left">
-          <div>{email}</div>
+          <div>
+            {" "}
+            <a href={mailto}>{obfuscated}</a>
+          </div>
           <a href={`tel:${phoneLink}`}>{phone}</a>
         </div>
 

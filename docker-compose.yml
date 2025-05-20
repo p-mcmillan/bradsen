@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 
 services:
   app:
@@ -6,10 +6,15 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - '3000:3000'
+      - "3000:3000"
     environment:
       - SERVER_HOST=0.0.0.0
       - SERVER_PORT=3000
+      - DATABASE_URL=postgres://ddf_user:ddf_pass@postgres:5432/ddf
+      - DDF_CLIENT_ID=your_id
+      - DDF_CLIENT_SECRET=your_secret
+    depends_on:
+      - postgres
     networks:
       - bradsen-app
 
@@ -19,12 +24,31 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     ports:
-      - '6962:80'
+      - "6962:80"
     restart: always
     depends_on:
       - app
     networks:
       - bradsen-app
+
+  postgres:
+    image: postgres:15
+    container_name: ddf-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ddf
+      POSTGRES_USER: ddf_user
+      POSTGRES_PASSWORD: ddf_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - ./listings.sql:/docker-entrypoint-initdb.d/listings.sql
+    networks:
+      - bradsen-app
+
+volumes:
+  pg_data:
 
 networks:
   bradsen-app:

@@ -1,80 +1,80 @@
 export const listing_celedonia = Object.values(
-  import.meta.glob('../assets/images/listings/*.jpg', {
+  import.meta.glob("../assets/images/listings/*.jpg", {
     eager: true,
-    import: 'default',
+    import: "default",
   })
 );
 
 export const backgroundImages = {
-  footer: import.meta.glob('../assets/images/footer.webp', {
+  footer: import.meta.glob("../assets/images/footer.webp", {
     eager: true,
-    import: 'default',
-  })['../assets/images/footer.webp'],
+    import: "default",
+  })["../assets/images/footer.webp"],
 
-  aboutUs: import.meta.glob('../assets/images/about-us_hero.webp', {
+  aboutUs: import.meta.glob("../assets/images/about-us_hero.webp", {
     eager: true,
-    import: 'default',
-  })['../assets/images/about-us_hero.webp'],
+    import: "default",
+  })["../assets/images/about-us_hero.webp"],
 
-  faq: import.meta.glob('../assets/images/faq_hero.webp', {
+  faq: import.meta.glob("../assets/images/faq_hero.webp", {
     eager: true,
-    import: 'default',
-  })['../assets/images/faq_hero.webp'],
+    import: "default",
+  })["../assets/images/faq_hero.webp"],
 
-  listings: import.meta.glob('../assets/images/listings_hero.webp', {
+  listings: import.meta.glob("../assets/images/listings_hero.webp", {
     eager: true,
-    import: 'default',
-  })['../assets/images/listings_hero.webp'],
+    import: "default",
+  })["../assets/images/listings_hero.webp"],
 
-  landing01: import.meta.glob('../assets/images/landing_hero-01.webp', {
+  landing01: import.meta.glob("../assets/images/landing_hero-01.webp", {
     eager: true,
-    import: 'default',
-  })['../assets/images/landing_hero-01.webp'],
+    import: "default",
+  })["../assets/images/landing_hero-01.webp"],
 
-  landing02: import.meta.glob('../assets/images/landing_hero-02.webp', {
+  landing02: import.meta.glob("../assets/images/landing_hero-02.webp", {
     eager: true,
-    import: 'default',
-  })['../assets/images/landing_hero-02.webp'],
+    import: "default",
+  })["../assets/images/landing_hero-02.webp"],
 
-  wmLogo: import.meta.glob('../assets/logos/westmar-logo-full-colour.jpg', {
+  wmLogo: import.meta.glob("../assets/logos/westmar-logo-full-colour.jpg", {
     eager: true,
-    import: 'default',
-  })['../assets/logos/westmar-logo-full-colour.jpg'],
+    import: "default",
+  })["../assets/logos/westmar-logo-full-colour.jpg"],
 };
 
 export const images = import.meta.glob(
-  '../assets/images/listings/webp-optimized/*.webp',
+  "../assets/images/listings/webp-optimized/*.webp",
   {
     eager: true,
-    import: 'default',
+    import: "default",
   }
 );
 
 const allListingImages = Object.entries(images).map(([path, src]) => {
-  const name = path.split('/').pop(); // e.g. "celedonia_1.jpg"
+  const name = path.split("/").pop(); // e.g. "celedonia_1.jpg"
   return { name, src };
 });
 
 // Filter images for 1777 Caledonia
 const caledoniaImages = allListingImages
-  .filter((img) => img.name.startsWith('celedonia'))
+  .filter((img) => img.name.startsWith("celedonia"))
   .sort((a, b) => a.name.localeCompare(b.name)); // Sort by file name
 
 export const navLinks = [
   {
-    id: 'home',
-    title: 'Home',
-    to: '/',
+    id: "home",
+    title: "Home",
+    to: "/",
   },
   {
-    id: 'about-me',
-    title: 'About Me',
-    to: '/about-me',
+    id: "about-me",
+    title: "About Me",
+    to: "/about-me",
   },
   {
-    id: 'listings',
-    title: 'Listings',
-    to: '/listings',
+    id: "listings",
+    title: "Listings",
+    to: "/listings",
   },
   // {
   //   id: "blog",
@@ -82,128 +82,128 @@ export const navLinks = [
   //   to: "/blog",
   // },
   {
-    id: 'FAQ',
-    title: 'FAQ',
-    to: '/faq',
+    id: "FAQ",
+    title: "FAQ",
+    to: "/faq",
   },
   {
-    id: 'contact',
-    title: 'Contact',
-    to: '/contact-me',
+    id: "contact",
+    title: "Contact",
+    to: "/contact-me",
   },
 ];
 
 export const aboutUsImages = {
-  hero: import.meta.glob('../assets/images/hero-house.jpg', {
+  hero: import.meta.glob("../assets/images/hero-house.jpg", {
     eager: true,
-    import: 'default',
-  })['../assets/images/hero-house.jpg'],
-  investment: import.meta.glob('../assets/images/sunlit_dining_room.webp', {
+    import: "default",
+  })["../assets/images/hero-house.jpg"],
+  investment: import.meta.glob("../assets/images/sunlit_dining_room.webp", {
     eager: true,
-    import: 'default',
-  })['../assets/images/sunlit_dining_room.webp'],
+    import: "default",
+  })["../assets/images/sunlit_dining_room.webp"],
 
-  modernCondo: import.meta.glob('../assets/images/modern_condo.webp', {
+  modernCondo: import.meta.glob("../assets/images/modern_condo.webp", {
     eager: true,
-    import: 'default',
-  })['../assets/images/modern_condo.webp'],
+    import: "default",
+  })["../assets/images/modern_condo.webp"],
 
-  classicHome: import.meta.glob('../assets/images/classic_home.webp', {
+  classicHome: import.meta.glob("../assets/images/classic_home.webp", {
     eager: true,
-    import: 'default',
-  })['../assets/images/classic_home.webp'],
+    import: "default",
+  })["../assets/images/classic_home.webp"],
 
-  aboutUs: import.meta.glob('../assets/images/about-us.jpg', {
+  aboutUs: import.meta.glob("../assets/images/about-us.jpg", {
     eager: true,
-    import: 'default',
-  })['../assets/images/about-us.jpg'],
+    import: "default",
+  })["../assets/images/about-us.jpg"],
 };
 
 export const agentInfo = {
-  id: 'b4871e51-b486-421c-8b64-4f667bf5fc59',
-  agentImage: import.meta.glob('../assets/images/tyler_bradsen.webp', {
+  id: "b4871e51-b486-421c-8b64-4f667bf5fc59",
+  agentImage: import.meta.glob("../assets/images/tyler_bradsen.webp", {
     eager: true,
-    import: 'default',
-  })['../assets/images/tyler_bradsen.webp'],
-  name: 'Tyler Bradsen',
-  title: 'REALTOR ®',
-  bio: 'As a dedicated and results-driven real estate professional, I bring a strong commitment to client satisfaction and a deep knowledge of the local market. With a background in real estate sales and a passion for helping people find the perfect home or investment, I offer personalized guidance and strategic insight through every step of the buying or selling process. My approach combines integrity, clear communication, and a keen eye for detail to ensure smooth transactions and lasting relationships. Whether you’re a first-time homebuyer, seasoned investor, or looking to sell your property, I’m here to make the experience seamless and rewarding. I stay up to date on market trends and leverage the latest technology and marketing strategies to maximize results. My goal is not just to close deals, but to be a trusted advisor and advocate for your real estate goals. Let’s work together to turn your vision into reality.',
-  phoneLink: '+1-778-989-8442',
-  phone: '778 989 8442',
-  email: 'tylerbradsen@gmail.com',
-  website: 'https://tylerbradsen.com/',
+    import: "default",
+  })["../assets/images/tyler_bradsen.webp"],
+  name: "Tyler Bradsen",
+  title: "REALTOR ®",
+  bio: "As a dedicated and results-driven real estate professional, I bring a strong commitment to client satisfaction and a deep knowledge of the local market. With a background in real estate sales and a passion for helping people find the perfect home or investment, I offer personalized guidance and strategic insight through every step of the buying or selling process. My approach combines integrity, clear communication, and a keen eye for detail to ensure smooth transactions and lasting relationships. Whether you’re a first-time homebuyer, seasoned investor, or looking to sell your property, I’m here to make the experience seamless and rewarding. I stay up to date on market trends and leverage the latest technology and marketing strategies to maximize results. My goal is not just to close deals, but to be a trusted advisor and advocate for your real estate goals. Let’s work together to turn your vision into reality.",
+  phoneLink: "+1-778-989-8442",
+  phone: "778 989 8442",
+  email: "tylerbradsen@gmail.com",
+  website: "https://tylerbradsen.com/",
   brokerage: {
-    name: 'Macdonald Realty Westmar',
-    logo: 'https://westmar.ca/_media/custom/Vector-color.svg',
-    website: 'https://westmar.ca/',
+    name: "Macdonald Realty Westmar",
+    logo: "https://westmar.ca/_media/custom/Vector-color.svg",
+    website: "https://westmar.ca/",
     address: {
-      street: '203 - 5188 Westminster Hwy',
-      city: 'Richmond',
-      province: 'BC',
-      postalCode: 'V7C 5S7',
-      country: 'Canada',
+      street: "203 - 5188 Westminster Hwy",
+      city: "Richmond",
+      province: "BC",
+      postalCode: "V7C 5S7",
+      country: "Canada",
     },
   },
   socialMedia: {
-    facebook: 'https://www.facebook.com/example',
-    instagram: 'https://www.instagram.com/example',
-    twitter: 'https://twitter.com/example',
-    linkedin: 'https://www.linkedin.com/in/tyler-bradsen-287021362/',
-    youtube: 'https://www.youtube.com/channel/example',
+    facebook: "https://www.facebook.com/example",
+    instagram: "https://www.instagram.com/example",
+    twitter: "https://twitter.com/example",
+    linkedin: "https://www.linkedin.com/in/tyler-bradsen-287021362/",
+    youtube: "https://www.youtube.com/channel/example",
   },
 };
 
 export const listings = [
   {
-    id: 'e8be09f9-d831-4744-8478-9b1c5108783f',
-    title: '1777 Caledonia Avenue',
+    id: "e8be09f9-d831-4744-8478-9b1c5108783f",
+    title: "1777 Caledonia Avenue",
     address: {
-      street: '1777 Caledonia Avenue',
-      city: 'North Vancouver',
-      province: 'BC',
-      postalCode: 'V7G 1A1',
-      country: 'Canada',
+      street: "1777 Caledonia Avenue",
+      city: "North Vancouver",
+      province: "BC",
+      postalCode: "V7G 1A1",
+      country: "Canada",
       coordinates: {
         latitude: 49.3194,
         longitude: -122.9499,
       },
     },
     features: {
-      style: 'Split Level',
-      type: 'Single Family Home',
-      exteriorFinish: 'Wood',
-      roofType: 'Asphalt Shingle',
-      foundation: 'Concrete',
-      flooring: 'Hardwood / Tile / Carpet',
-      fireplace: 'Gas',
+      style: "Split Level",
+      type: "Single Family Home",
+      exteriorFinish: "Wood",
+      roofType: "Asphalt Shingle",
+      foundation: "Concrete",
+      flooring: "Hardwood / Tile / Carpet",
+      fireplace: "Gas",
       appliancesIncluded: [
-        'Refrigerator',
-        'Stove',
-        'Dishwasher',
-        'Washer/Dryer',
+        "Refrigerator",
+        "Stove",
+        "Dishwasher",
+        "Washer/Dryer",
       ],
       beds: 5,
       baths: 3,
       kitchens: 2,
       garages: 2,
       suites: 1,
-      area: '2,141',
-      garageSpace: '413',
-      lotSize: '6,581',
+      area: "2,141",
+      garageSpace: "413",
+      lotSize: "6,581",
       yearBuilt: 1985,
-      heating: 'Forced Air / Baseboard',
-      cookingFuel: 'Electric',
+      heating: "Forced Air / Baseboard",
+      cookingFuel: "Electric",
     },
 
-    zoning: 'RS4',
-    frontage: '51’',
-    taxes: '$7,900.47 (2024)',
-    ownership: 'Freehold',
-    elementarySchool: 'Cove Cliff',
-    secondarySchool: 'Seycove',
+    zoning: "RS4",
+    frontage: "51’",
+    taxes: "$7,900.47 (2024)",
+    ownership: "Freehold",
+    elementarySchool: "Cove Cliff",
+    secondarySchool: "Seycove",
     walkScore: 67,
     bikeScore: 46,
-    amenitiesNearby: 'Everything!',
+    amenitiesNearby: "Everything!",
     price: 1925000,
     image: images,
     description: `
@@ -217,14 +217,75 @@ export const listings = [
       What are you waiting for? Don’t just live—thrive!
     `,
     squareFootBreakdown: {
-      mainLevel: '1,217 sq.ft.',
-      lowerLevel: '924 sq.ft.',
-      totalInterior: '2,141 sq.ft.',
-      deck: '162 sq.ft.',
-      porch: '48 sq.ft.',
-      garage: '413 sq.ft.',
-      patio: '96 sq.ft.',
-      totalExterior: '719 sq.ft.',
+      mainLevel: "1,217 sq.ft.",
+      lowerLevel: "924 sq.ft.",
+      totalInterior: "2,141 sq.ft.",
+      deck: "162 sq.ft.",
+      porch: "48 sq.ft.",
+      garage: "413 sq.ft.",
+      patio: "96 sq.ft.",
+      totalExterior: "719 sq.ft.",
     },
   },
 ];
+
+export const neighborhoods = {
+  Vancouver: [
+    "Downtown",
+    "Yaletown",
+    "Gastown",
+    "Coal Harbour",
+    "West End",
+    "Kitsilano",
+    "Fairview",
+    "Mount Pleasant",
+    "Main Street",
+    "Fraser",
+    "Cambie Village",
+    "Shaughnessy",
+    "Marpole",
+    "Oakridge",
+    "Kerrisdale",
+    "Dunbar",
+    "Point Grey",
+    "Hastings-Sunrise",
+    "Renfrew-Collingwood",
+    "Strathcona",
+    "South Vancouver",
+  ],
+  "North Vancouver": [
+    "Lonsdale",
+    "Lower Lonsdale",
+    "Upper Lonsdale",
+    "Edgemont",
+    "Lynn Valley",
+    "Blueridge",
+    "Deep Cove",
+    "Canyon Heights",
+    "Delbrook",
+    "Capilano",
+    "Seymour",
+    "Queensbury",
+    "Westlynn",
+    "Grousewoods",
+    "Indian River",
+  ],
+  Burnaby: [
+    "Metrotown",
+    "Brentwood",
+    "Edmonds",
+    "Burnaby Heights",
+    "Capitol Hill",
+    "Forest Glen",
+    "South Slope",
+    "Big Bend",
+    "Deer Lake",
+    "Central Park",
+    "Willingdon Heights",
+    "Montecito",
+    "Lochdale",
+    "Government Road",
+    "Simon Fraser Hills",
+    "Sperling-Duthie",
+  ],
+};

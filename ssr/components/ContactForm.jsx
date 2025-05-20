@@ -1,90 +1,3 @@
-// import React, { useState } from "react";
-
-// const ContactForm = ({ agent }) => {
-//   const [formData, setFormData] = useState({
-//     fullName: "",
-//     email: "",
-//     message: "",
-//   });
-
-//   const handleChange = (e) => {
-//     setFormData((prev) => ({
-//       ...prev,
-//       [e.target.name]: e.target.value,
-//     }));
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     // TODO: Replace with your email sending logic (e.g., EmailJS, API endpoint, etc.)
-//     console.log("Form submitted:", formData);
-//     alert("Message sent successfully!");
-//   };
-
-//   return (
-//     <div className="bg-white rounded-xl shadow p-3">
-//       {/* Header block */}
-//       <div className="flex items-center gap-4 mb-6 bg-gray-50 rounded-2xl">
-//         <img
-//           src={agent.agentImage}
-//           alt={agent.name}
-//           className="w-14 h-14 rounded-2xl object-cover object-[50%_10%] m-3"
-//         />
-//         <div>
-//           <h5 className="">Contact {agent.name}</h5>
-//           <p className="text-sm text-gray-600">{agent.phone}</p>
-//         </div>
-//       </div>
-
-//       {/* Form block */}
-//       <form onSubmit={handleSubmit} className="space-y-4">
-//         {/* Row of inputs */}
-//         <div className="flex flex-col md:flex-row gap-4">
-//           <div className="flex-1">
-//             <label className="block text-sm font-medium mb-1">Full Name</label>
-//             <input
-//               type="text"
-//               name="fullName"
-//               className="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-//               placeholder="Enter your full name here."
-//             />
-//           </div>
-//           <div className="flex-1">
-//             <label className="block text-sm font-medium mb-1">Email</label>
-//             <input
-//               type="email"
-//               name="email"
-//               className="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-//               placeholder="Enter your email here"
-//             />
-//           </div>
-//         </div>
-
-//         {/* Message */}
-//         <div>
-//           <label className="block text-sm font-medium mb-1">Message</label>
-//           <textarea
-//             name="message"
-//             rows="6"
-//             className="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-//             placeholder="Enter your message"
-//           ></textarea>
-//         </div>
-
-//         {/* Submit Button */}
-//         <button
-//           type="submit"
-//           className="w-full bg-black text-white rounded-full py-2 font-semibold hover:bg-gray-800 transition"
-//         >
-//           Send Message
-//         </button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default ContactForm;
-
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -111,7 +24,7 @@ const ContactForm = ({ agent }) => {
         <img
           src={agent.agentImage}
           alt={agent.name}
-          className="w-14 h-14 rounded-2xl object-cossr/components/ContactForm.jsxver object-[50%_10%]"
+          className="w-14 h-14 rounded-2xl object-[50%_10%]"
         />
         <div>
           <h5 className="text-md font-semibold">Contact {agent.name}</h5>
@@ -123,11 +36,32 @@ const ContactForm = ({ agent }) => {
       <Formik
         initialValues={{ fullName: "", email: "", message: "" }}
         validationSchema={ContactSchema}
-        onSubmit={(values, { resetForm }) => {
-          // TODO: Replace with your email sending logic (e.g., EmailJS, API endpoint, etc.)
-          console.log("Submitted values:", values);
-          alert("Message sent successfully!");
-          resetForm();
+        onSubmit={async (values, { resetForm }) => {
+          try {
+            const res = await axios.post("/api/contact-agent", values);
+
+            console.log("📨 API response:", res.data);
+
+            if (res.data && res.data.success) {
+              alert("Message sent!");
+              resetForm();
+            } else {
+              alert("Something went wrong.");
+            }
+          } catch (err) {
+            console.error("❌ Axios error:", err);
+
+            // Helpful diagnostics
+            if (err.response?.data) {
+              console.log("Server responded with:", err.response.data);
+            } else if (err.request) {
+              console.log("No response received from server.");
+            } else {
+              console.log("Request setup error:", err.message);
+            }
+
+            alert("Failed to send message. Please try again.");
+          }
         }}
       >
         {({ isSubmitting }) => (

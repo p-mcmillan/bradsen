@@ -1,36 +1,37 @@
 const PropertyCard = ({ listing }) => {
-  const imagesObj = listing.image ?? {};
-  const targetFile = '1777 Caledonia-18.webp';
+  const media = listing.raw_data?.Media || [];
 
-  const matchedKey = Object.keys(imagesObj).find((key) =>
-    key.endsWith(targetFile)
-  );
-
-  const imageUrl = matchedKey ? imagesObj[matchedKey] : null;
-
+  const imageUrl =
+    media.length > 0
+      ? typeof media[0] === "string"
+        ? media[0]
+        : media[0]?.MediaURL || media[0]?.url || "/fallback.jpg"
+      : "/fallback.jpg";
   return (
-    <div className="mb-6 bg-white rounded-xl shadow p-3 max-w-">
+    <div className="mb-6 bg-white rounded-xl shadow p-3">
       <div className="relative overflow-hidden rounded-lg">
         <img
           src={imageUrl}
-          alt={listing.title}
+          alt={listing.unparsed_address || "Listing image"}
           loading="lazy"
           className="w-full h-[180px] object-cover rounded-md"
         />
-        <span className="absolute top-2 left-2 bg-white text-xs px-2 py-1 rounded-full shadow">
+        <span className="absolute top-2 left-2 bg-white px-2 py-1 rounded-full shadow">
           For Sale
         </span>
       </div>
 
       <div className="mt-4">
-        <h3 className="text-lg font-semibold">{listing.title}</h3>
-        <p className="text-sm text-gray-600 mt-1">
-          {listing.address?.street}, {listing.address?.city}
+        <h3 className="text-lg font-semibold">
+          {listing.unparsed_address || "Unnamed Property"}
+        </h3>
+        <p className="text-gray-600 mt-1">
+          {listing.city}, {listing.province}
         </p>
-        <div className="flex justify-between text-sm mt-3 text-gray-700">
-          <span>🛏️ {listing.features?.beds} Beds</span>
-          <span>🛁 {listing.features?.baths} Baths</span>
-          <span>📐 {listing.features?.area} sq</span>
+        <div className="flex justify-between mt-3 text-gray-700">
+          <span>🛏️ {listing.bedrooms_total || 0} Beds</span>
+          <span>🛁 {listing.bathrooms_total_integer || 0} Baths</span>
+          <span>📐 {listing.living_area || "—"} sq ft</span>
         </div>
       </div>
     </div>
