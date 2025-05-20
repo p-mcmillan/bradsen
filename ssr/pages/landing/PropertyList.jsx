@@ -1,21 +1,26 @@
-import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
-import PropertyCard from "../../components/PropertyCard";
+import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
+import PropertyCard from '../../components/PropertyCard';
 
 const fetchListings = async () => {
-  const res = await fetch("/api/listings");
-  if (!res.ok) throw new Error("Failed to fetch listings");
+  const res = await fetch('/api/listings', {
+    headers: {
+      Authorization: `Bearer ${import.meta.env.VITE_PUBLIC_LISTINGS_TOKEN}`,
+    },
+  });
+
+  if (!res.ok) throw new Error('Unauthorized or failed to fetch');
+
   return res.json();
 };
-
 const PropertyList = () => {
   const {
     data = [],
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["listings"],
+    queryKey: ['listings'],
     queryFn: fetchListings,
   });
 
