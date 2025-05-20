@@ -1,3 +1,5 @@
+const port = process.env.PORT;
+
 export const monitorOptions = {
   title: "Bradsen Server Monitor",
   path: "",
@@ -22,13 +24,13 @@ export const monitorOptions = {
       protocol: "http",
       host: "localhost",
       path: "/api/health",
-      port: "3003",
+      port: port,
     },
     {
       protocol: "http",
       host: "localhost",
       path: "/api/ping",
-      port: "3003",
+      port: port,
     },
   ],
 };

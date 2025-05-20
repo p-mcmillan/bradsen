@@ -1,5 +1,7 @@
 import { QueryClient, dehydrate } from "@tanstack/react-query";
 
+const port = process.env.PORT;
+
 export async function createPrefetchedQueryClient() {
   console.log("⚡️ createPrefetchedQueryClient() called on server");
 
@@ -8,9 +10,9 @@ export async function createPrefetchedQueryClient() {
   await queryClient.prefetchQuery({
     queryKey: ["listings"],
     queryFn: () =>
-      fetch("http://localhost:3003/api/listings", {
+      fetch(`http://localhost:${port}/api/listings`, {
         headers: {
-          Authorization: `Bearer ${process.env.LISTINGS_API_TOKEN}`,
+          Authorization: `Bearer ${process.env.VITE_PUBLIC_LISTINGS_TOKEN}`,
         },
       }).then((res) => {
         if (!res.ok) throw new Error("Failed to fetch listings");
