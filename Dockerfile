@@ -8,6 +8,6 @@ RUN corepack enable && corepack prepare yarn@4.9.1 --activate
 
 RUN yarn install --frozen-lockfile
 
-EXPOSE 3001
+EXPOSE 3003
 
-CMD ["node", "dist/app.js"]
+CMD ["node", "server.js"]
