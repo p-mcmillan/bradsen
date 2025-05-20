@@ -9,4 +9,4 @@ export const pool = new pg.Pool({
     process.env.DATABASE_SSL === "true" ? { rejectUnauthorized: false } : false,
 });
 
-console.log(pool, "POOL");
+console.log("DB CONNECTED", pool);

@@ -1,12 +1,18 @@
-import { useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { useEffect } from 'react';
-import ResponsiveCarousel from '../../components/ResponsiveCarousel';
-import { agentInfo } from '../../constants';
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+import ResponsiveCarousel from "../../components/ResponsiveCarousel";
+import { agentInfo } from "../../constants";
 
 const fetchListings = async () => {
-  const res = await fetch('/api/listings');
-  if (!res.ok) throw new Error('Failed to fetch listings');
+  const res = await fetch("/api/listings", {
+    headers: {
+      Authorization: `Bearer ${import.meta.env.VITE_PUBLIC_LISTINGS_TOKEN}`,
+    },
+  });
+
+  if (!res.ok) throw new Error("Unauthorized or failed to fetch");
+
   return res.json();
 };
 
@@ -22,14 +28,21 @@ export default function PropertyDetail({ is404, setPageContext }) {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ['listings'],
+    queryKey: ["listings"],
     queryFn: fetchListings,
   });
 
-  if (isLoading) return <div className="p-8">Loading...</div>;
+  if (isLoading)
+    return (
+      <div className="p-8">
+        <span className="loading loading-ball loading-lg"></span>
+      </div>
+    );
   if (error) return <div className="p-8">Error loading property</div>;
 
   const listing = data.find((item) => String(item.id) === id);
+
+  console.log(listing);
 
   // Inform SSR that this is a 404
   if (!listing && setPageContext) {
@@ -61,7 +74,7 @@ export default function PropertyDetail({ is404, setPageContext }) {
   } = listing;
 
   const imageGallery = (raw_data?.Media || [])
-    .filter((m) => m.MediaCategory === 'Property Photo')
+    .filter((m) => m.MediaCategory === "Property Photo")
     .map((m) => ({
       original: m.MediaURL,
       thumbnail: m.MediaURL,
@@ -86,7 +99,7 @@ export default function PropertyDetail({ is404, setPageContext }) {
     <div className="max-w-3xl mx-auto px-4 py-8 text-sm text-gray-800 m-16 ">
       {/* Breadcrumb */}
       <nav className="text-xs text-gray-500 mb-4">
-        Property / My House /{' '}
+        Property / My House /{" "}
         <span className="text-black font-semibold">{address.street}</span>
       </nav>
 
@@ -105,9 +118,9 @@ export default function PropertyDetail({ is404, setPageContext }) {
       {/* Price & tags */}
       <div className="mb-4">
         <p className="text-2xl font-bold">
-          {rawPrice.toLocaleString('en-US', {
-            style: 'currency',
-            currency: 'USD',
+          {rawPrice.toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD",
           })}
         </p>
         {pricePerSqFt && (
@@ -125,7 +138,7 @@ export default function PropertyDetail({ is404, setPageContext }) {
       </div>
 
       <div>
-        <strong>Appliances:</strong> {appliances.join(', ')}
+        <strong>Appliances:</strong> {appliances.join(", ")}
       </div>
 
       {/* Agent Card */}
@@ -169,25 +182,25 @@ export default function PropertyDetail({ is404, setPageContext }) {
         </p>
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <strong>Style:</strong>{' '}
-            {(listing.architectural_style || []).join(', ') || 'N/A'}
+            <strong>Style:</strong>{" "}
+            {(listing.architectural_style || []).join(", ") || "N/A"}
           </div>
           <div>
-            <strong>Year Built:</strong> {year_built || 'N/A'}
+            <strong>Year Built:</strong> {year_built || "N/A"}
           </div>
           <div>
-            <strong>Foundation:</strong>{' '}
-            {(listing.foundation_details || []).join(', ') || 'N/A'}
+            <strong>Foundation:</strong>{" "}
+            {(listing.foundation_details || []).join(", ") || "N/A"}
           </div>
           <div>
-            <strong>Heating:</strong>{' '}
-            {(listing.heating || []).join(', ') || 'N/A'}
+            <strong>Heating:</strong>{" "}
+            {(listing.heating || []).join(", ") || "N/A"}
           </div>
           <div>
-            <strong>Fireplace:</strong> {listing.fireplaces_total ?? 'N/A'}
+            <strong>Fireplace:</strong> {listing.fireplaces_total ?? "N/A"}
           </div>
           <div>
-            <strong>Appliances:</strong> {appliances.join(', ') || 'N/A'}
+            <strong>Appliances:</strong> {appliances.join(", ") || "N/A"}
           </div>
         </div>
       </div>
