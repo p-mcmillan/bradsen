@@ -1,13 +1,13 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin "daisyui" {
   themes: false;
 }
 
 @font-face {
-  font-family: 'Manrope';
-  src: url('../ssr/assets/fonts/Manrope-Regular.woff2') format('woff2'),
-    url('../ssr/assets/fonts/Manrope-Regular.woff') format('woff'),
-    url('../ssr/assets/fonts/Manrope-VariableFont_wght.ttf') format('truetype');
+  font-family: "Manrope";
+  src: url("../ssr/assets/fonts/Manrope-Regular.woff2") format("woff2"),
+    url("../ssr/assets/fonts/Manrope-Regular.woff") format("woff"),
+    url("../ssr/assets/fonts/Manrope-VariableFont_wght.ttf") format("truetype");
   font-weight: 100 900;
   font-display: swap;
 }
@@ -17,7 +17,7 @@
   --breakpoint-tablet: 834px;
   --breakpoint-desktop: 1440px;
 
-  --font-sans: 'Manrope', sans-serif;
+  --font-sans: "Manrope", sans-serif;
 
   --color-primary-0: #fafafa;
   --color-primary-25: #e4e4e7;

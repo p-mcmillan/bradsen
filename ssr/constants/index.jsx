@@ -5,6 +5,13 @@ export const listing_celedonia = Object.values(
   })
 );
 
+export const mortgageCalculator = {
+  maple_icon: import.meta.glob("../assets/images/icon-maple-leaf.jpg", {
+    eager: true,
+    import: "default",
+  })["../assets/images/icon-maple-leaf.jpg"],
+};
+
 export const backgroundImages = {
   footer: import.meta.glob("../assets/images/footer.webp", {
     eager: true,

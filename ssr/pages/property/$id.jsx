@@ -162,7 +162,7 @@ export default function PropertyDetail({ is404, setPageContext }) {
       <div className="mb-6">
         <h2 className="font-semibold mb-2">Location</h2>
         <p className=" text-gray-600 mb-2">
-          {address}, {city}, {province}, {postal_code}, Canada
+          {address}, {city}, {province}
         </p>
         <iframe
           title="Google Map"

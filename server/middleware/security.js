@@ -29,6 +29,7 @@ export const contentSecurityPolicy = {
       "https://onekindesign.com",
       "https://www.googletagmanager.com",
       "https://ddfcdn.realtor.ca",
+      "https://jarosciak.com/mortgagecalculator/assets/img/icon-maple-leaf.jpg",
     ],
     fontSrc: ["'self'", "https://fonts.gstatic.com", "data:"],
     connectSrc: [
