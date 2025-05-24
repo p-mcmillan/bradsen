@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { mortgageCalculator } from "../../constants";
 import CityAutocomplete from "../../components/CitySelector";
 
 const terms = [
@@ -46,6 +47,7 @@ export default function MortgageRates() {
   const [rates, setRates] = useState([]);
   const [loading, setLoading] = useState(false);
   const [cachedKey, setCachedKey] = useState("");
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const fetchRates = async () => {
     const {
@@ -155,15 +157,23 @@ export default function MortgageRates() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto mt-24 px-4 sm:px-6 lg:px-8 mb-20">
-      <h1 className="font-bold mb-6 text-center">
-        Compare Canadian Mortgage Rates
-      </h1>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 mt-24 mb-9">
+      <div className="text-center mb-6">
+        <img
+          src={mortgageCalculator.maple_icon}
+          alt="Leaf"
+          className="mx-auto w-12 h-12"
+        />
+        <h1 className="text-3xl sm:text-4xl font-bold mt-2">
+          Compare Canadian Mortgage Rates
+        </h1>
+      </div>
 
       <form
         className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10"
         onSubmit={(e) => {
           e.preventDefault();
+          setHasSubmitted(true);
           fetchRates();
         }}
       >
@@ -178,16 +188,16 @@ export default function MortgageRates() {
           name="homePrice"
           value={params.homePrice}
           onChange={handleChange}
-          placeholder="Purchase Price *"
+          placeholder="Purchase Price"
           required
-          className="p-2 border rounded focus:ring-2 focus:ring-blue-500"
+          className="p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <input
           type="number"
           name="downPaymentAmount"
           value={params.downPaymentAmount}
           onChange={handleChange}
-          placeholder="Down Payment *"
+          placeholder="Down Payment"
           required
           className="p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
@@ -196,9 +206,9 @@ export default function MortgageRates() {
           value={params.term}
           onChange={handleChange}
           required
-          className="p-2 border rounded focus:ring-2 focus:ring-blue-500"
+          className="p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <option value="">Select Term *</option>
+          <option value="">Select Term</option>
           {terms.map((t) => (
             <option key={t.value} value={t.value}>
               {t.label}
@@ -210,7 +220,7 @@ export default function MortgageRates() {
           value={params.type}
           onChange={handleChange}
           required
-          className="p-2 border rounded focus:ring-2 focus:ring-blue-500"
+          className="p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="">Select Type *</option>
           <option value="fixed">Fixed</option>
@@ -221,9 +231,9 @@ export default function MortgageRates() {
           value={params.amortization}
           onChange={handleChange}
           required
-          className="p-2 border rounded focus:ring-2 focus:ring-blue-500"
+          className="p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <option value="">Select Amortization *</option>
+          <option value="">Select Amortization</option>
           {amortizationOptions.map((opt) => (
             <option key={opt.value} value={opt.value}>
               {opt.label}
@@ -240,9 +250,9 @@ export default function MortgageRates() {
             }))
           }
           required
-          className="p-2 border rounded focus:ring-2 focus:ring-blue-500"
+          className="p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <option value="">Occupancy *</option>
+          <option value="">Occupancy</option>
           {occupancyOptions.map((opt) => (
             <option key={opt.key} value={opt.value}>
               {opt.label}
@@ -254,7 +264,7 @@ export default function MortgageRates() {
           name="scenario"
           value={params.scenario}
           onChange={handleChange}
-          className="p-2 border rounded focus:ring-2 focus:ring-blue-500"
+          className="p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           {transactionOptions.map((opt) => (
             <option key={opt.value} value={opt.value}>
@@ -263,17 +273,19 @@ export default function MortgageRates() {
           ))}
         </select>
 
-        <button
-          type="submit"
-          className="sm:col-span-2 bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
-        >
-          Get Rates
-        </button>
+        <div className="sm:col-span-2 flex justify-center">
+          <button
+            type="submit"
+            className="w-full sm:w-auto px-6 py-3 text-base font-semibold bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-300"
+          >
+            Get Rates
+          </button>
+        </div>
       </form>
 
       {loading ? (
         <p className="text-center">Loading...</p>
-      ) : rates.length === 0 ? (
+      ) : hasSubmitted && rates.length === 0 ? (
         <p className="text-center text-gray-600">No results found.</p>
       ) : (
         <div className="space-y-4">

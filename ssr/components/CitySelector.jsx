@@ -32,7 +32,7 @@ export default function CityAutocomplete({ onSelect }) {
       <input
         type="text"
         className="w-full p-2 border border-black rounded focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
-        placeholder="City *"
+        placeholder="City"
         value={input}
         onChange={handleChange}
         required

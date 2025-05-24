@@ -3,8 +3,6 @@ import { QueryClient, dehydrate } from "@tanstack/react-query";
 const port = process.env.PORT;
 
 export async function createPrefetchedQueryClient() {
-  console.log("⚡️ createPrefetchedQueryClient() called on server");
-
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({

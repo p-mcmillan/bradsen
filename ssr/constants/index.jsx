@@ -38,6 +38,11 @@ export const backgroundImages = {
     import: "default",
   })["../assets/images/landing_hero-01.webp"],
 
+  mortgage: import.meta.glob("../assets/images/mortage-guide.webp", {
+    eager: true,
+    import: "default",
+  })["../assets/images/mortage-guide.webp"],
+
   landing02: import.meta.glob("../assets/images/landing_hero-02.webp", {
     eager: true,
     import: "default",
@@ -83,11 +88,11 @@ export const navLinks = [
     title: "Listings",
     to: "/listings",
   },
-  // {
-  //   id: "blog",
-  //   title: "Blog",
-  //   to: "/blog",
-  // },
+  {
+    id: "mortgage-guide",
+    title: "Mortgage Guide",
+    to: "/mortgage-guide",
+  },
   {
     id: "FAQ",
     title: "FAQ",

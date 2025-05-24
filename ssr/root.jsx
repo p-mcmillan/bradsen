@@ -16,7 +16,6 @@ export const RootDocument = async () => {
   let dehydratedState = {};
 
   if (typeof window === "undefined") {
-    console.log("🧠 Running in server (SSR)");
     const { getClientAssets } = await import("../utils/getClientAssets.js");
 
     const prefetched = await createPrefetchedQueryClient(); // 👈 FIX
@@ -25,11 +24,6 @@ export const RootDocument = async () => {
     const assets = getClientAssets();
     styles = assets.styles;
     scripts = assets.scripts;
-
-    console.log(
-      "🔄 SSR dehydratedState keys:",
-      Object.keys(dehydratedState?.queries || {})
-    );
   }
 
   return (
