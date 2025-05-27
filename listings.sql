@@ -117,6 +117,9 @@ CREATE TABLE listings (
   fireplaces_total INT,
   fireplace_yn BOOLEAN,
 
+  -- New field for toggling "For Sale" / "Sold"
+  listing_status TEXT DEFAULT 'For Sale',
+
   -- raw for safety
   raw_data JSONB,
   created_at TIMESTAMP DEFAULT NOW(),

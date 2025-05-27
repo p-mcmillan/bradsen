@@ -16,8 +16,16 @@ const PropertyCard = ({ listing }) => {
           loading="lazy"
           className="w-full h-[180px] object-cover rounded-md"
         />
-        <span className="absolute top-2 left-2 bg-white px-2 py-1 rounded-full shadow">
-          For Sale
+        <span
+          className={`absolute top-2 left-2 px-2 py-1 rounded-full shadow
+    ${
+      listing.listing_status === "Sold"
+        ? "bg-red-600 text-white"
+        : "bg-white text-black"
+    }
+  `}
+        >
+          {listing.listing_status || "For Sale"}
         </span>
       </div>
 

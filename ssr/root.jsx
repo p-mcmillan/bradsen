@@ -18,7 +18,7 @@ export const RootDocument = async () => {
   if (typeof window === "undefined") {
     const { getClientAssets } = await import("../utils/getClientAssets.js");
 
-    const prefetched = await createPrefetchedQueryClient(); // 👈 FIX
+    const prefetched = await createPrefetchedQueryClient(); 
     dehydratedState = prefetched.dehydratedState;
 
     const assets = getClientAssets();
