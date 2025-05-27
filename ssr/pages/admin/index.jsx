@@ -61,8 +61,32 @@ export default function AdminListingsPage() {
     }
   };
 
+  const toggleStatus = async (id, currentStatus) => {
+    const newStatus = currentStatus === "Sold" ? "For Sale" : "Sold";
+    const res = await fetch(`/api/admin/listings/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Basic ${btoa(
+          `${import.meta.env.VITE_ADMIN_USER}:${
+            import.meta.env.VITE_ADMIN_PASS
+          }`
+        )}`,
+      },
+      body: JSON.stringify({ listing_status: newStatus }),
+    });
+
+    if (res.ok) {
+      setListings((prev) =>
+        prev.map((l) => (l.id === id ? { ...l, listing_status: newStatus } : l))
+      );
+    } else {
+      console.error("Failed to update status");
+    }
+  };
+
   return (
-    <div className="p-4 max-w-7xl mx-auto mt-36">
+    <div className="p-4 max-w-7xl mx-auto mt-36 mb-12">
       <h1 className="text-2xl font-bold mb-4">Admin Listings Panel</h1>
       <div className="flex items-center gap-4 mb-4">
         {" "}
