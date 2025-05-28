@@ -50,14 +50,12 @@ app.use(cors(corsOptions));
 
 const monitor = statusMonitor(monitorOptions);
 
-// ⚠️ Must be before routes and SSR
 app.use(monitor.middleware);
 app.get("/status", statusAuth, monitor.pageRoute);
 
 // Middleware
 app.use(compression());
 
-//middleware
 app.use(express.static("public"));
 
 // Static assets
